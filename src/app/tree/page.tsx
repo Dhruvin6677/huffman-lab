@@ -7,14 +7,8 @@ export default function TreePage() {
       <PageHead
         idx="02"
         kicker="Visualiser"
-        title={
-          <>
-            See the greedy,
-            <br />
-            leaf by leaf.
-          </>
-        }
-        lede="Every input owns a tree: each leaf is a symbol, each internal node the weight of the two children it fused. Replay the construction merge by merge, watch the min-heap admit each new fragment, and trace any symbol to its exact codeword."
+        title={<>Huffman tree visualizer</>}
+        lede="Every input owns a tree: each leaf is a symbol, each internal node the weight of its two fused children. Replay the construction merge by merge, watch the min-heap admit each new fragment, and trace any symbol to its exact codeword."
         meta={[
           { k: 'Greedy choice', v: 'always merge the two lightest' },
           { k: 'Invariant', v: 'leaf weight ≤ depth balance' },

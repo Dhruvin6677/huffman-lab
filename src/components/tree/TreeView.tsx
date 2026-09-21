@@ -218,8 +218,8 @@ export default function TreeView() {
   if (!analysis) {
     return (
       <div className="wrap mt-10">
-        <div className="terminal px-5 py-4 font-mono text-[13px] text-phosdim">
-          <strong>huf$</strong> nothing to draw — paste some text above.
+        <div className="terminal px-5 py-4 text-[13px] text-phosdim">
+          <strong>Nothing to draw</strong> — paste some text above.
         </div>
       </div>
     )
@@ -257,7 +257,7 @@ export default function TreeView() {
                 reset sample
               </button>
             </div>
-            <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-mute">
+            <p className="text-[12px] text-mute">
               drag to pan · Ctrl+scroll to zoom · hover to read a code
             </p>
           </div>
@@ -277,10 +277,10 @@ export default function TreeView() {
       <div className="wrap mt-8 grid gap-6 lg:grid-cols-[1fr_264px]">
         <div className="panel overflow-hidden">
           <div className="flex items-center justify-between border-b border-hair bg-paper px-4 py-2">
-            <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-ink2">
+            <p className="text-[13px] text-ink2">
               {k} leaves · up to {analysis.maxLen} deep · H(S) = {analysis.entropy.toFixed(2)} bit
             </p>
-            <p className="font-mono text-[10.5px] text-faint">{num(analysis.n)} symbols</p>
+            <p className="font-mono text-[12px] text-faint">{num(analysis.n)} symbols</p>
           </div>
           <div className="dotgrid relative h-[560px] overflow-hidden">
             <svg
@@ -394,7 +394,7 @@ function TreeCanvas({
             <path
               d={`M ${e.x1} ${e.y1} C ${e.x1} ${e.y1 + ROW_H * 0.4}, ${e.x2} ${e.y2 - ROW_H * 0.4}, ${e.x2} ${e.y2}`}
               fill="none"
-              stroke={inPath ? '#bf4a1f' : inStep ? '#2e7d43' : '#c9c0a8'}
+              stroke={inPath ? '#2563eb' : inStep ? '#16a34a' : '#d4d4d8'}
               strokeWidth={inPath || inStep ? 2.6 : 1.3}
             />
             <text
@@ -402,8 +402,8 @@ function TreeCanvas({
               y={(e.y1 + e.y2) / 2}
               textAnchor="middle"
               fontSize={9.5}
-              fontFamily="var(--font-plex)"
-              fill={inPath || inStep ? '#bf4a1f' : '#a49c83'}
+              fontFamily="var(--font-mono)"
+              fill={inPath || inStep ? '#2563eb' : '#a1a1aa'}
             >
               {e.label}
             </text>
@@ -435,8 +435,8 @@ function TreeCanvas({
                   width={LEAF_W}
                   height={LEAF_H}
                   rx={2}
-                  fill={hovered ? '#f7e2d7' : 'transparent'}
-                  stroke={hovered ? '#bf4a1f' : leafPulse ? '#2e7d43' : '#b7ad90'}
+                  fill={hovered ? '#eff6ff' : 'transparent'}
+                  stroke={hovered ? '#2563eb' : leafPulse ? '#16a34a' : '#9ca3af'}
                   strokeWidth={hovered || leafPulse ? 2 : 1.2}
                 />
                 <text
@@ -444,9 +444,9 @@ function TreeCanvas({
                   y={ln.y + 5}
                   textAnchor="middle"
                   fontSize={13}
-                  fontFamily="var(--font-plex)"
+                  fontFamily="var(--font-mono)"
                   fontWeight={hovered ? 600 : 400}
-                  fill="#1b180f"
+                  fill="#18181b"
                 >
                   {prettyChar(n.sym!)}
                 </text>
@@ -457,8 +457,8 @@ function TreeCanvas({
                   cx={ln.x}
                   cy={ln.y}
                   r={hovered ? NODE_R + 2.5 : NODE_R}
-                  fill={hovered ? '#bf4a1f' : '#17140d'}
-                  stroke={leafPulse ? '#2e7d43' : '#b7ad90'}
+                  fill={hovered ? '#2563eb' : '#18181b'}
+                  stroke={leafPulse ? '#16a34a' : '#9ca3af'}
                   strokeWidth={hovered || leafPulse ? 2.4 : 1.2}
                   className={leafPulse ? 'pulse' : undefined}
                 />
@@ -467,8 +467,8 @@ function TreeCanvas({
                   y={ln.y + 4}
                   textAnchor="middle"
                   fontSize={8.5}
-                  fontFamily="var(--font-plex)"
-                  fill={hovered ? '#fff3e8' : '#ece6d6'}
+                  fontFamily="var(--font-mono)"
+                  fill={hovered ? '#ffffff' : '#ffffff'}
                 >
                   {n.weight}
                 </text>
@@ -480,8 +480,8 @@ function TreeCanvas({
                 y={ln.y + LEAF_H / 2 + 12}
                 textAnchor="middle"
                 fontSize={9}
-                fontFamily="var(--font-plex)"
-                fill="#8a8470"
+                fontFamily="var(--font-mono)"
+                fill="#71717a"
               >
                 {n.weight}
               </text>
@@ -492,12 +492,12 @@ function TreeCanvas({
 
       {/* legend chip */}
       <g transform={`translate(10 10)`} className="pointer-events-none select-none">
-        <circle cx={8} cy={8} r={6} fill="#17140d" stroke="#b7ad90" />
-        <text x={20} y={11} fontSize={10} fontFamily="var(--font-plex)" fill="#6f684f">
+        <circle cx={8} cy={8} r={6} fill="#18181b" stroke="#9ca3af" />
+        <text x={20} y={11} fontSize={10} fontFamily="var(--font-mono)" fill="#71717a">
           internal weight
         </text>
-        <rect x={8} y={26} width={12} height={10} fill="transparent" stroke="#b7ad90" />
-        <text x={26} y={35} fontSize={10} fontFamily="var(--font-plex)" fill="#6f684f">
+        <rect x={8} y={26} width={12} height={10} fill="transparent" stroke="#9ca3af" />
+        <text x={26} y={35} fontSize={10} fontFamily="var(--font-mono)" fill="#71717a">
           leaf symbol — weight under it
         </text>
       </g>
@@ -552,9 +552,9 @@ function GreedyReplay({
 
   if (steps.length === 0) {
     return (
-      <div className="terminal px-5 py-4 font-mono text-[13px] text-phosdim">
-        <strong>set:</strong> the alphabet is a single symbol — nothing to merge; its codeword is the empty
-        string, costing 0 bits.
+      <div className="terminal px-5 py-4 text-[13px] text-phosdim">
+        The alphabet is a single symbol — nothing to merge; its codeword is the
+        empty string, costing 0 bits.
       </div>
     )
   }

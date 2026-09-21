@@ -8,14 +8,8 @@ export default function MethodPage() {
       <PageHead
         idx="04"
         kicker="Method"
-        title={
-          <>
-            The greedy,
-            <br />
-            disassembled.
-          </>
-        }
-        lede="Huffman coding is greedy strategy wearing its proof on its sleeve. This page is the write-up: the problem, the minimum-redundancy construction, the exchange argument that licenses the greedy move, the costs, and the file format this project ships in."
+        title={<>Method &amp; proofs</>}
+        lede="The write-up: the problem, the greedy construction, the exchange argument that proves it optimal, the running costs, and the HUF1 container this project ships in."
         meta={[
           { k: 'Choice', v: 'merge the two lightest subtrees' },
           { k: 'Proof', v: 'exchange argument' },

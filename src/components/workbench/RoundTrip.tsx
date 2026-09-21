@@ -79,7 +79,7 @@ export default function RoundTrip({ text, fileName }: { text: string; fileName: 
                 </div>
               </dl>
 
-              <p className="mt-4 font-mono text-[11.5px] leading-relaxed text-ink2">
+              <p className="mt-4 text-[12.5px] leading-relaxed text-ink2">
                 HUF1 container: 4-byte marker, u16 table width, u32 codepoints +
                 frequencies (the decoder rebuilds the tree, never stores it),
                 u32 payload length, u8 padding, then the packed bytes.
@@ -106,7 +106,7 @@ export default function RoundTrip({ text, fileName }: { text: string; fileName: 
                     onFocus={(e) => e.currentTarget.select()}
                     onCopy={() => {}}
                   />
-                  <p className="mt-1 font-mono text-[10.5px] text-faint">
+                  <p className="mt-1 text-[12px] text-faint">
                     {num(b64.length)} chars of base64 — paste it anywhere and decode with the panel opposite.
                   </p>
                 </div>
@@ -151,10 +151,10 @@ export default function RoundTrip({ text, fileName }: { text: string; fileName: 
                 e.target.value = ''
               }}
             />
-            <label htmlFor="huf-file" className="cursor-pointer font-mono text-[12px] uppercase tracking-[0.12em] text-ink2">
+            <label htmlFor="huf-file" className="cursor-pointer text-[13px] font-medium text-ink2">
               drop a <span className="text-rust">.huf</span> here
             </label>
-            <p className="font-mono text-[10.5px] text-faint">or click to browse · or decode the archive above</p>
+            <p className="text-[12px] text-faint">or click to browse · or decode the archive above</p>
             <button type="button" className="btn btn-sm mt-2" onClick={selfDecode} disabled={!archive}>
               decode archive above ▸
             </button>
@@ -169,7 +169,7 @@ export default function RoundTrip({ text, fileName }: { text: string; fileName: 
           {decoded && !error && (
             <div className="mt-3">
               <div className="flex items-center justify-between gap-3">
-                <p className="font-mono text-[11px] text-mute">
+                <p className="text-[12px] text-mute">
                   {decoded.name} · {num(decoded.meta.payloadBits)} bits of payload
                 </p>
                 <span
@@ -185,7 +185,7 @@ export default function RoundTrip({ text, fileName }: { text: string; fileName: 
                 {decoded.text.length > 2000 && <span className="text-faint"> … +{num(decoded.text.length - 2000)} chars</span>}
               </div>
               {matches && (
-                <p className="mt-2 font-mono text-[11px] text-green">
+                <p className="mt-2 text-[12px] text-green">
                   symbols decode in specular order; every bit follows 0→left, 1→right from the root. no padding bit survives.
                 </p>
               )}

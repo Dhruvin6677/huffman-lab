@@ -33,10 +33,10 @@ export default function CostBars({
           <div key={r.label}>
             <div className="mb-2 flex items-baseline justify-between gap-4">
               <div>
-                <span className="font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-ink2">
+                <span className="text-[13.5px] font-medium text-ink2">
                   {r.label}
                 </span>
-                <span className="ml-3 font-mono text-[11px] text-faint">{r.hint}</span>
+                <span className="ml-3 text-[12px] text-faint">{r.hint}</span>
               </div>
               <span className="font-mono text-[14px] font-medium tabular-nums">
                 {sizeBytes(r.value)}
@@ -53,7 +53,7 @@ export default function CostBars({
             </div>
           </div>
         ))}
-        <p className="pt-2 font-mono text-[11px] uppercase tracking-[0.1em] text-faint">
+        <p className="pt-2 text-[12px] text-faint">
           bars scaled to the largest entry = {sizeBytes(max)}
         </p>
       </div>

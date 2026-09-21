@@ -79,19 +79,13 @@ export default function Workbench() {
       <PageHead
         idx="01"
         kicker="Workbench"
-        title={
-          <>
-            Compress anything,
-            <br />
-            watch the bits fall.
-          </>
-        }
+        title={<>Huffman encoder &amp; decoder</>}
         lede={
           <>
-            Type, paste, or drop a file. Huffman coding — computed live — builds
-            the optimal prefix code for this exact alphabet and shows you every
-            bit it spends. Round-trip it, download the archive, open it in the
-            visualiser. All of it happens in your browser.
+            Type, paste, or upload a file. This page builds the optimal prefix
+            code for its alphabet live — frequencies, codewords, the packed
+            bitstream — and round-trips the result. Everything runs in your
+            browser.
           </>
         }
         meta={
@@ -151,13 +145,13 @@ export default function Workbench() {
                 </button>
               ))}
             </div>
-            <div className="flex items-center gap-4 font-mono text-[11px] uppercase tracking-[0.1em] text-mute">
+            <div className="flex items-center gap-4 text-[12px] text-mute">
               {fileName && <span className="hidden max-w-[180px] truncate text-rust md:inline">{fileName}</span>}
               <span>
                 {num(nText)} ch · {num(nBytes)} B
               </span>
               {text && (
-                <button className="link font-mono text-[11px] normal-case tracking-normal" onClick={clearAll} type="button">
+                <button className="link" onClick={clearAll} type="button">
                   clear
                 </button>
               )}
@@ -168,7 +162,7 @@ export default function Workbench() {
             <textarea
               className="field min-h-[210px] px-1 py-3"
               placeholder={
-                'huf$ feed me text — a paragraph, a table, a genome, anything.\n\nTry a sample above, upload a .txt, or start typing…'
+                'Paste some text, choose a sample above, or upload a .txt file…'
               }
               value={text}
               spellCheck={false}
@@ -181,8 +175,8 @@ export default function Workbench() {
 
           {analysis && (
             <div className="flex flex-wrap items-center justify-between gap-3 border-t border-hair bg-paper px-4 py-3">
-              <p className="font-mono text-[11.5px] text-ink2">
-                <span className="text-rust">■</span> optimal tree ready ·
+              <p className="text-[13px] text-ink2">
+                optimal tree ready ·
                 {analysis.isPrefixFree ? ' prefix-free ✓' : ' prefix-free ✗'} ·{' '}
                 <span className="text-green">Σ2^(−ℓ) = {analysis.kraftSum.toFixed(4)}</span> ·{' '}
                 O(distinct) heap · O(n) encode
@@ -221,7 +215,7 @@ export default function Workbench() {
                   {Math.max(0, analysis.redundancy).toFixed(3)}
                   <span className="ml-1 text-[12px] text-mute">bit/sym</span>
                 </p>
-                <p className="mt-1 font-mono text-[10.5px] uppercase tracking-[0.08em] text-faint">
+                <p className="mt-1 text-[11px] text-faint">
                   the price of whole words
                 </p>
               </div>
@@ -233,7 +227,7 @@ export default function Workbench() {
                   {analysis.maxLen}
                   <span className="ml-1 text-[12px] text-mute">bit</span>
                 </p>
-                <p className="mt-1 font-mono text-[10.5px] uppercase tracking-[0.08em] text-faint">
+                <p className="mt-1 text-[11px] text-faint">
                   shallow ⇄ deep leaves
                 </p>
               </div>
@@ -276,19 +270,17 @@ export default function Workbench() {
             />
           </Fig>
 
-          <p className="border-t border-hair pt-6 font-mono text-[11.5px] uppercase tracking-[0.12em] text-faint">
-            fig. 01–05 · computed deterministically from the frequency table —
-            see <Link className="link normal-case" href="/method">method</Link> for the tie-break rule
+          <p className="border-t border-hair pt-6 text-[12.5px] text-faint">
+            computed deterministically from the frequency table —
+            see <Link className="link" href="/method">method</Link> for the tie-break rule
           </p>
         </div>
       ) : (
         <div className="wrap mt-14">
-          <div className="terminal px-5 py-4 font-mono text-[13px] leading-relaxed">
+          <div className="panel px-5 py-4 text-[14px] text-ink2">
             <p>
-              <strong>huf$</strong> waiting for input<span className="caret" />
-            </p>
-            <p className="mt-2">
-              paste text → builds frequency table → {analysis ? 'done' : ''}
+              Waiting for input — paste text above or pick a sample to compute a
+              Huffman code.
             </p>
           </div>
         </div>

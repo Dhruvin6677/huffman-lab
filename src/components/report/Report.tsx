@@ -61,7 +61,7 @@ export default function Report() {
             <p className="mt-2 font-mono text-[26px] font-medium text-rust">
               {pct(best.savings, 1)}
             </p>
-            <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.08em] text-faint">
+            <p className="mt-1 text-[11px] text-faint">
               {best.f.title}
             </p>
           </div>
@@ -70,7 +70,7 @@ export default function Report() {
             <p className="mt-2 font-mono text-[26px] font-medium text-ink2">
               {pct(Math.max(0, worst.savings), 1)}
             </p>
-            <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.08em] text-faint">
+            <p className="mt-1 text-[11px] text-faint">
               {worst.f.title}
             </p>
           </div>
@@ -79,7 +79,7 @@ export default function Report() {
             <p className="mt-2 font-mono text-[26px] font-medium text-green">
               {pct(avgSavings, 1)}
             </p>
-            <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.08em] text-faint">
+            <p className="mt-1 text-[11px] text-faint">
               across the corpus
             </p>
           </div>
@@ -123,7 +123,7 @@ export default function Report() {
               </tbody>
             </table>
           </div>
-          <p className="mt-3 font-mono text-[11px] text-faint">
+          <p className="mt-3 text-[12px] text-faint">
             fixed = n × ⌈log₂|Σ|⌉ bits · huff payload = Σ f·ℓ bits, padded to bytes ·
             container includes the HUF1 table &amp; counts the decoder needs
           </p>
@@ -238,7 +238,7 @@ function maxRaw(rows: Row[]): number {
 
 function GroupedBars({ rows }: { rows: Row[] }) {
   const mx = maxRaw(rows)
-  const colors: Record<string, string> = { raw: '#1b180f', fixed: '#ccc4aa', huff: '#bf4a1f' }
+  const colors: Record<string, string> = { raw: '#18181b', fixed: '#d4d4d8', huff: '#2563eb' }
   return (
     <div className="border border-hair bg-surface p-6">
       <div className="flex items-end justify-between gap-2" style={{ height: 220 }}>
@@ -275,11 +275,11 @@ function GroupedBars({ rows }: { rows: Row[] }) {
           </div>
         ))}
       </div>
-      <div className="mt-4 flex flex-wrap items-center gap-5 border-t border-hair pt-4 font-mono text-[11px] uppercase tracking-[0.08em] text-mute">
+      <div className="mt-4 flex flex-wrap items-center gap-5 border-t border-hair pt-4 text-[12px] text-mute">
         <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 bg-ink" /> raw bytes</span>
         <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 bg-hair2" /> fixed-width code</span>
         <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 bg-rust" /> Huffman container</span>
-        <span className="ml-auto normal-case tracking-normal text-faint">tallest bar = {num(mx)} B</span>
+        <span className="ml-auto text-faint">tallest bar = {num(mx)} B</span>
       </div>
     </div>
   )
@@ -305,7 +305,7 @@ function SavingsBars({ rows }: { rows: Row[] }) {
                   </span>
                 </div>
                 <div className="relative h-[10px] border border-hair bg-paper">
-                  <div className="absolute inset-y-0" style={{ left: `${AXIS}%`, width: 1, background: '#c9c0a8' }} />
+                  <div className="absolute inset-y-0" style={{ left: `${AXIS}%`, width: 1, background: '#d4d4d8' }} />
                   <div
                     className={`absolute inset-y-0 ${neg ? 'bar-fill bar-fill-green' : 'bg-rust'}`}
                     style={{
@@ -318,7 +318,7 @@ function SavingsBars({ rows }: { rows: Row[] }) {
             )
           })}
       </div>
-      <p className="mt-5 border-t border-hair pt-3 font-mono text-[11px] text-faint">
+      <p className="mt-5 border-t border-hair pt-3 text-[12px] text-faint">
         the hairline marks the ratio = 1 boundary at +20% — savings extend right of it, negative savings eat left
       </p>
     </div>
@@ -351,7 +351,7 @@ function EntropyBars({ rows }: { rows: Row[] }) {
           </div>
         ))}
       </div>
-      <p className="mt-5 flex items-center gap-5 border-t border-hair pt-3 font-mono text-[11px] uppercase tracking-[0.08em] text-mute">
+      <p className="mt-5 flex items-center gap-5 border-t border-hair pt-3 text-[12px] text-mute">
         <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 bg-green" /> entropy H(S)</span>
         <span className="flex items-center gap-2"><span className="inline-block h-3 w-3 bg-rust" /> L̄ codeword</span>
       </p>
@@ -391,7 +391,7 @@ function ExportBar({ rows, avgSavings, best, worst }: { rows: Row[]; avgSavings:
       <button type="button" className="btn btn-ghost" onClick={() => window.print()}>
         print / save pdf
       </button>
-      <p className="ml-auto font-mono text-[11px] text-faint">
+      <p className="ml-auto text-[12px] text-faint">
         regenerated live · includes the ledger, charts as data, and these findings
       </p>
     </div>

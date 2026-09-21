@@ -71,12 +71,12 @@ export default function CodeTable({
   return (
     <div className="terminal overflow-hidden">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-darkline px-4 py-3">
-        <p className="font-mono text-[11.5px] text-phosdim">
+        <p className="text-[12.5px] text-phosdim">
           <strong>{num(entries.length)}</strong> codewords · <strong>{num(totalBits)}</strong> bits
-          spent in total · hover a row to trace it through FIG. 04
+          spent in total · hover a row to trace it through the bitstream below
         </p>
         <div className="flex items-center gap-2">
-          <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-phosdim">
+          <span className="text-[12px] text-phosdim">
             sort
           </span>
           {(
@@ -96,14 +96,14 @@ export default function CodeTable({
                   setAsc(false)
                 }
               }}
-              className={`font-mono text-[10.5px] uppercase tracking-[0.08em] px-2 py-1 border ${
-                sortKey === k ? 'border-phos text-phos' : 'border-darkline text-phosdim'
+              className={`text-[12.5px] px-2.5 py-1 border rounded ${
+                sortKey === k ? 'border-ink text-ink font-medium bg-dark' : 'border-darkline text-phosdim'
               }`}
             >
               {label}
             </button>
           ))}
-          <button type="button" onClick={copyAll} className="btn btn-sm border-phos text-phos">
+          <button type="button" onClick={copyAll} className="btn btn-sm">
             copy all
           </button>
         </div>
@@ -170,13 +170,13 @@ export default function CodeTable({
 
       {sorted.length > HEAD && (
         <div className="border-t border-darkline px-4 py-3">
-          <button type="button" className="btn btn-sm border-phos text-phos" onClick={() => setExpanded(!expanded)}>
-            {expanded ? 'collapse table —' : `+ show all remaining ${num(sorted.length - HEAD)} codes`}
+          <button type="button" className="btn btn-sm" onClick={() => setExpanded(!expanded)}>
+            {expanded ? 'collapse table' : `+ show all remaining ${num(sorted.length - HEAD)} codes`}
           </button>
         </div>
       )}
 
-      <p className="border-t border-darkline px-4 py-2.5 font-mono text-[10.5px] uppercase tracking-[0.1em] text-phosdim/70">
+      <p className="border-t border-darkline px-4 py-2.5 text-[12px] text-phosdim/80">
         ε = the single-symbol degenerate code (empty), shown only for an alphabet of one · click a row to pin its trace · 0→left 1→right
       </p>
     </div>

@@ -4,29 +4,24 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const NAV = [
-  { href: '/', label: 'Workbench', idx: '01' },
-  { href: '/tree', label: 'Tree', idx: '02' },
-  { href: '/report', label: 'Report', idx: '03' },
-  { href: '/method', label: 'Method', idx: '04' },
+  { href: '/', label: 'Workbench' },
+  { href: '/tree', label: 'Tree' },
+  { href: '/report', label: 'Report' },
+  { href: '/method', label: 'Method' },
 ]
 
 export default function Header() {
   const path = usePathname()
 
   return (
-    <header className="sticky top-0 z-50 border-b border-hair bg-paper/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-hair bg-white/90 backdrop-blur-sm">
       <div className="wrap flex h-16 items-center justify-between gap-6">
-        <Link href="/" className="flex items-center gap-3 group">
-          <span className="grid h-8 w-8 place-items-center border border-ink/30 group-hover:border-rust transition-colors">
+        <Link href="/" className="flex items-center gap-2.5">
+          <span className="grid h-8 w-8 place-items-center border border-hair2 rounded">
             <TreeGlyph />
           </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-[15px] font-semibold tracking-tight">
-              Huffman&nbsp;Lab
-            </span>
-            <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-mute">
-              BCSE204P · Exp&nbsp;1
-            </span>
+          <span className="font-display text-[16px] font-bold tracking-tight">
+            Huffman&nbsp;Lab
           </span>
         </Link>
 
@@ -37,28 +32,16 @@ export default function Header() {
               <Link
                 key={n.href}
                 href={n.href}
-                className={`px-3 py-2 font-mono text-[11.5px] uppercase tracking-[0.12em] transition-colors border ${
-                  active
-                    ? 'border-ink bg-ink text-paper'
-                    : 'border-transparent text-ink2 hover:text-ink hover:border-hair2'
+                className={`px-3 py-2 text-[14px] rounded-md transition-colors ${
+                  active ? 'text-rust font-medium' : 'text-ink2 hover:text-ink'
                 }`}
                 aria-current={active ? 'page' : undefined}
               >
-                <span className="text-rust mr-1.5">{n.idx}</span>
                 {n.label}
               </Link>
             )
           })}
         </nav>
-
-        <a
-          href="https://en.wikipedia.org/wiki/Huffman_coding"
-          target="_blank"
-          rel="noreferrer"
-          className="hidden lg:inline-flex font-mono text-[10.5px] uppercase tracking-[0.14em] text-mute hover:text-rust transition-colors border border-hair2 px-3 py-2"
-        >
-          1952 · D.A. Huffman ↖
-        </a>
       </div>
     </header>
   )

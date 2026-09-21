@@ -102,16 +102,16 @@ export default function BitsPane({
               key={k}
               type="button"
               onClick={() => setTab(k)}
-              className={`font-mono text-[10.5px] uppercase tracking-[0.1em] px-3 py-1.5 border ${
-                tab === k ? 'border-phos text-phos' : 'border-darkline text-phosdim'
+              className={`text-[12.5px] px-3 py-1.5 border rounded ${
+                tab === k ? 'border-ink text-ink font-medium bg-dark' : 'border-darkline text-phosdim'
               }`}
             >
               {label}
             </button>
           ))}
         </div>
-        <p className="font-mono text-[11px] text-phosdim">
-          hover a row below → FIG. 03 · click to pin · thin tick = byte boundary
+        <p className="text-[12px] text-phosdim">
+          hover a bit to find its symbol above · click to pin · thin tick = byte boundary
         </p>
       </div>
 
@@ -157,7 +157,7 @@ export default function BitsPane({
                   ))}
                 </tbody>
               </table>
-              <p className="mt-4 border-t border-darkline pt-3 font-mono text-[11px] text-phosdim">
+              <p className="mt-4 border-t border-darkline pt-3 text-[12px] text-phosdim">
                 {num(rowsState.totalBits)} payload bits · {num(rowsState.rows.length)} rows of 32
                 {rowsState.omittedChars > 0 && (
                   <>
@@ -198,13 +198,13 @@ export default function BitsPane({
           {bytesOmitted > 0 && (
             <button
               type="button"
-              className="btn btn-sm mt-3 border-phos text-phos"
+              className="btn btn-sm mt-3"
               onClick={() => setShowAll(true)}
             >
               + dump all {num(packed.bytes.length)} payload bytes
             </button>
           )}
-          <p className="mt-4 border-t border-darkline pt-3 font-mono text-[11px] text-phosdim">
+          <p className="mt-4 border-t border-darkline pt-3 text-[12px] text-phosdim">
             {num(capBytes)} of {num(packed.bytes.length)} packed bytes displayed · trailing padding{' '}
             {packed.pad} bit{packed.pad === 1 ? '' : 's'}
           </p>
