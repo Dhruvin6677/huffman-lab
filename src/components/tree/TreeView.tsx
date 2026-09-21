@@ -258,7 +258,7 @@ export default function TreeView() {
               </button>
             </div>
             <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-mute">
-              drag to pan · scroll to zoom · hover to read a code
+              drag to pan · Ctrl+scroll to zoom · hover to read a code
             </p>
           </div>
           <div className="fieldzone px-4 py-2">
@@ -285,8 +285,10 @@ export default function TreeView() {
           <div className="dotgrid relative h-[560px] overflow-hidden">
             <svg
               ref={svgRef}
-              className="h-full w-full touch-none cursor-grab active:cursor-grabbing"
+              className="h-full w-full cursor-grab active:cursor-grabbing"
+              style={{ touchAction: 'pan-y' }}
               onWheel={(e) => {
+                if (!e.ctrlKey && !e.metaKey) return
                 e.preventDefault()
                 const r = svgRef.current?.getBoundingClientRect()
                 if (!r) return

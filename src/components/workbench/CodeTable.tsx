@@ -109,7 +109,7 @@ export default function CodeTable({
         </div>
       </div>
 
-      <div className="max-h-[440px] overflow-auto">
+      <div className="max-h-[min(70vh,720px)] overflow-auto overscroll-contain">
         <table className="tbl w-full border-collapse">
           <thead className="sticky top-0 z-10 bg-dark">
             <tr>

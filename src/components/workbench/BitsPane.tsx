@@ -116,7 +116,7 @@ export default function BitsPane({
       </div>
 
       {tab === 'bits' ? (
-        <div className="overflow-auto p-4" style={{ maxHeight: 460 }}>
+        <div className="overflow-auto overscroll-contain p-4" style={{ maxHeight: 'min(70vh, 720px)' }}>
           {rowsState.rows.length === 0 ? (
             <p className="font-mono text-[12px] text-phosdim">
               single-symbol alphabet — payload is 0 bits; the lone codeword ε carries the story.
@@ -170,7 +170,7 @@ export default function BitsPane({
           )}
         </div>
       ) : (
-        <div className="overflow-auto p-4" style={{ maxHeight: 460 }}>
+        <div className="overflow-auto overscroll-contain p-4" style={{ maxHeight: 'min(70vh, 720px)' }}>
           <table className="w-full font-mono text-[12.5px] leading-[1.7]">
             <tbody>
               {byteRows.map((rowBytes, i) => (
